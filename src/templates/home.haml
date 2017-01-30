@@ -1,21 +1,19 @@
 !!! 5
 %html.no-js{:lang => "en"}
-	
+
 	%head
 		%title {{ site.tagline }} - {{ site.company }}
-		
+
 		{{> head }}
-		
+
 
 	%body
-		.container
+		{{> header }}
 
-			{{> header }}
+		-# {{> chat_boter text="Hej!" }}
 
-			{{> chat_boter text="Hej!" }}
+		{{> convo }}
 
-			{{> convo }}
+		{{> footer }}
 
-			{{> footer }}
-
-			{{> scripts }}
+		{{> scripts }}
