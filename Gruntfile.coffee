@@ -81,14 +81,6 @@ module.exports = (grunt) ->
 					'build/assets/js/bundle.js': [ 'build/assets/js/app.js' ]
 
 		copy:
-			project_images:
-				files: [{
-					expand: true
-					cwd: 'content/projects'
-					src: '{,*/}*.{jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF}'
-					dest: 'build/assets/projects'
-				}]
-
 			assets:
 				files: [{
 					expand: true
@@ -119,8 +111,6 @@ module.exports = (grunt) ->
 
 		# useminPrepare:
 		# 	html: [
-		# 		'build/people/*/index.html'
-		# 		'build/projects/*/index.html'
 		# 		'build/index.html'
 		# 	]
 		# 	options:
