@@ -17,7 +17,7 @@ body
     padding:
       left: 6rem
       right: 6rem
-      
+
 .spacer
   clear: both
 
@@ -74,14 +74,25 @@ i
 
 
 .logo
-  color: #F3E100
   font-size: 2rem
   font-weight: 700
   margin:
     bottom: .5rem
     top: .5rem
+
+  a
+    color: $secondary-color
+
+  +breakpoint(small2)
+    text-align: left
+
   img
     padding-right: .5rem
+    +breakpoint(small only)
+      width: 240px
+      display: block
+      margin: 0 auto
+      padding-top: 1rem
 
   +breakpoint(medium)
     margin:
@@ -90,7 +101,7 @@ i
     img
       padding-right: 1rem
 
-  +breakpoint(xxlarge)
+  +breakpoint(xlarge)
     margin:
       bottom: 3rem
       top: 3rem
