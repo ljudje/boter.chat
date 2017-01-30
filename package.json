@@ -1,5 +1,5 @@
 {
-  "name": "metalsmith-starter",
+  "name": "boter.chat",
   "version": "0.0.1",
   "description": "Metalsmith starter",
   "devDependencies": {
@@ -50,14 +50,12 @@
   "browserify-shim": {
     "jquery": "$",
     "foundation": "foundation",
-    "imgix": "imgix",
     "imagesloaded": "imagesLoaded"
   },
   "browser": {
     "jquery": "./node_modules/jquery/dist/jquery.min.js",
-    "foundation": "./node_modules/foundation-sites/dist/foundation.min.js",
+    "foundation": "./node_modules/foundation-sites/dist/js/foundation.min.js",
     "imagesloaded": "./node_modules/imagesloaded/imagesloaded.pkgd.min.js",
-    "imgix": "./src/assets/js/imgix.min.js"
   },
   "private": true
 }
