@@ -2,10 +2,10 @@ $ = require('jquery')
 
 foundation = require('foundation')
 
-equalizer = require('./equalizer')
-# responsive_images = require('./responsive_images')
-external_links = require('./external_links')
+# equalizer = require('./equalizer')
+# external_links = require('./external_links')
 # back_scroll = require('./back_scroll')
+bubbles = require('./bubbles')
 
 # # # # # # # # # # # # # # #
 # # # INIT  # # # # # # # # #
@@ -13,10 +13,7 @@ external_links = require('./external_links')
 
 $(document).foundation()
 
-equalizer.init()
-
-# responsive_images.init()
-
-external_links.init()
-
 # back_scroll.init()
+# equalizer.init()
+# external_links.init()
+bubbles.init()
