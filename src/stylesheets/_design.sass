@@ -6,29 +6,30 @@
 i
   font-weight: 400
 
-.chatblock div
-  background: #0976F2
-  border-radius: 6px
-  padding: 16px 24px
+.bubble, .link, .linklist
   float: left
-  margin: 8px 0px
+  clear: both
+  border-radius: 6px
+  margin: 8px 0
+  padding: 16px 24px
 
-#link
+.bubble
+  background: #0976F2
+
+.link
   background: #F3E100
   color: #F3E100
 
-#linklist
-  background: #F3E100
-  color: #F3E100
-  margin: 0px
-  padding: 0px
+.linklist
+  margin: 0
+  padding: 0 0 10px 0
   list-style: none
 
   li
     float: left
     background: #F3E100
     color: #F3E100
-    margin: 0px 10px 0px 0px
+    margin: 0 10px 0 0
     padding: 20px
     border-radius: 6px
 
@@ -40,9 +41,9 @@ i
 
       img
         width: 100%
-        margin: 0px 0px 10px 0px
+        margin: 0 0 10px 0
 
-#link a
+.link a
   color: #0976F2
   text-decoration: none
 
@@ -81,24 +82,25 @@ i
         top: -.5rem
         left: -5.5rem
 
-.chatblock
+.chatblock, .inputblock
   display: block
   width: 100%
+  clear: both
 
   img
     width: 80%
     margin: 10% auto
     display: block
 
-.user div
+.user .bubble
   float: right
   background: white
   color: #0976F2
 
-.bot div
+.bot .bubble
   float: left
 
-.bot div, .user div
+.bot .bubble, .user .bubble
   max-width: 90%
   +breakpoint(medium)
     max-width: 75%
@@ -106,19 +108,19 @@ i
     max-width: 66%
 
 .spacer
-  padding: 0px !important
-  margin: 0px !important
+  padding: 0 !important
+  margin: 0 !important
 
 .spinner
   margin: 100px auto 0
   width: 90px
   text-align: center
 
-  > div
+  > .bounce
     width: 10px
     height: 10px
     background-color: white
-    padding: 0px !important
+    padding: 0 !important
     margin: 2px
     border-radius: 100%
     display: inline-block
@@ -149,7 +151,5 @@ i
   40%
     -webkit-transform: scale(1)
     transform: scale(1)
-
-
 
 @media screen and (max-width: 320px)
