@@ -15,6 +15,12 @@ If the `make build` command fails, you might need to install XCode Command Line 
 
     $ xcode-select --install
 
+You need Ruby, Ruby Gems & Bundler installed.
+
+Download Ruby & Gems from http://ruby-lang.org.
+
+Run `gem install bundler`.
+
 ## Development
 
 To work on the website:
