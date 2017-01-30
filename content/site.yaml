@@ -1,8 +1,9 @@
-version: 0.1
-company: Company
+version: '0.1'
+company: 'Boter.chat'
+tagline: 'Tovarna chatbotov'
 contact_address: contact@domain.com
-tagline: Tagline
 asset_host: host.imgix.net
+analytics_id: 'UA-42431823-13'
 facebook_url: 'http://facebook.com/name'
 facebook_name: Name
 github_url: 'http://github.com/name'
