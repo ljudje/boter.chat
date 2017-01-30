@@ -10,7 +10,7 @@ dev: node_modules Gemfile.lock
 server: node_modules
 	node ./node_modules/node-static/bin/cli.js -a 0.0.0.0 -p 9080 build
 
-dev-server:
+dev-server: node_modules Gemfile.lock
 	make dev server -j2
 
 node_modules: package.json
