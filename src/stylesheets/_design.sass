@@ -1,1 +1,149 @@
 // Your design goes here
+
+body
+  padding: 0px
+  margin: 0px
+  background: #FC6060
+  font-family: 'Space Mono', monospace
+  font-weight: 700 !important
+  font-size: 1.0em
+  color: white
+  text-rendering: optimizeLegibility !important
+  -webkit-font-smoothing: antialiased !important
+  line-height: 1.4
+
+.container
+  width: 100%
+  max-width: 1000px
+  margin: auto auto auto auto
+  border: 20px transparent solid
+  box-sizing: border-box
+
+i
+  font-weight: 400
+
+.chatblock div
+  background: #0976F2
+  border-radius: 6px
+  padding: 16px 24px
+  float: left
+  margin: 8px 0px
+
+#link
+  background: #F3E100
+  color: #F3E100
+
+#linklist
+  background: #F3E100
+  color: #F3E100
+  margin: 0px
+  padding: 0px
+  list-style: none
+
+  li
+    float: left
+    background: #F3E100
+    color: #F3E100
+    margin: 0px 10px 0px 0px
+    padding: 20px
+    border-radius: 6px
+
+    a
+      display: list-item
+      width: 180px
+      text-decoration: none
+      color: #0976F2
+
+      img
+        width: 100%
+        margin: 0px 0px 10px 0px
+
+#link a
+  color: #0976F2
+  text-decoration: none
+
+  &:visited
+    color: #0976F2
+    text-decoration: none
+
+  &:hover
+    text-decoration: underline
+
+
+.logo
+  color: #F3E100
+  font-size: 32px
+  margin: 10px 0px 40px -110px
+
+  img
+    margin: 0px 24px -32px 0px
+
+.chatblock
+  display: block
+  width: 100%
+
+  img
+    width: 80%
+    margin: 10% auto
+    display: block
+
+.user div
+  float: right
+  background: white
+  color: #0976F2
+  max-width: 60%
+
+.bot div
+  float: left
+  max-width: 60%
+
+.spacer
+  padding: 0px !important
+  margin: 0px !important
+
+.spinner
+  margin: 100px auto 0
+  width: 46px
+  text-align: center
+
+  > div
+    width: 10px
+    height: 10px
+    background-color: white
+    padding: 0px !important
+    margin: 2px
+    border-radius: 100%
+    display: inline-block
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both
+
+  .bounce1
+    -webkit-animation-delay: -0.32s
+    animation-delay: -0.32s
+
+  .bounce2
+    -webkit-animation-delay: -0.16s
+    animation-delay: -0.16s
+
+
+@-webkit-keyframes sk-bouncedelay
+  0%, 80%, 100%
+    -webkit-transform: scale(0)
+
+  40%
+    -webkit-transform: scale(1)
+
+@keyframes sk-bouncedelay
+  0%, 80%, 100%
+    -webkit-transform: scale(0)
+    transform: scale(0)
+
+  40%
+    -webkit-transform: scale(1)
+    transform: scale(1)
+
+@media screen and (max-width: 1300px)
+  .logo
+    margin: 30px 0px 40px -3px
+
+@media screen and (max-width: 320px)
