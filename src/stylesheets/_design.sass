@@ -100,11 +100,16 @@ i
   float: right
   background: white
   color: #0976F2
-  max-width: 60%
 
 .bot div
   float: left
-  max-width: 60%
+
+.bot div, .user div
+  max-width: 90%
+  +breakpoint(medium)
+    max-width: 75%
+  +breakpoint(large)
+    max-width: 66%
 
 .spacer
   padding: 0px !important
