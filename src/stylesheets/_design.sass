@@ -64,11 +64,28 @@ i
 
 .logo
   color: #F3E100
-  font-size: 32px
-  margin: 10px 0px 40px -110px
+  font-size: 2rem
+  font-weight: 700
+  margin:
+    bottom: 0.5rem
+    top: 0.5rem
 
-  img
-    margin: 0px 24px -32px 0px
+  +breakpoint(medium)
+    margin:
+      bottom: 1.5rem
+      top: 1.5rem
+    img
+      padding-right: 1rem
+
+  +breakpoint(xxlarge)
+    margin:
+      bottom: 2rem
+      top: 2rem
+    img
+      position: fixed
+      margin:
+        top: -0.5rem
+        left: -5.5rem
 
 .chatblock
   display: block
@@ -134,8 +151,6 @@ i
     -webkit-transform: scale(1)
     transform: scale(1)
 
-@media screen and (max-width: 1300px)
-  .logo
-    margin: 30px 0px 40px -3px
+
 
 @media screen and (max-width: 320px)
