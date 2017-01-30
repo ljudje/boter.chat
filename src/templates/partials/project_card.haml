@@ -1,0 +1,18 @@
+.project_card{:id => "{{ paths.name }}"}
+	.cover-wrap
+		{{# responsive_image this this.cover_image }}
+		%a.cover.imgix-fluid{:href => "/projects/{{ parent_name }}", data: {src: "{{ remote_src }}"}}
+		{{/ responsive_image }}
+
+	.basic-info
+		{{# if description }}
+		.description
+			%h2
+				%a{:href => "/projects/{{ paths.name }}"}
+					{{ description }}
+		{{/ if }}
+		
+		.client-year
+			%p
+				%a{:href => "/projects/{{ paths.name }}"}
+					{{ name }} / {{ client }}, {{ year }}

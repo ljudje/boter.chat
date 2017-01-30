@@ -1,0 +1,9 @@
+version: 0.1
+company: Company
+contact_address: contact@domain.com
+tagline: Tagline
+asset_host: host.imgix.net
+facebook_url: 'http://facebook.com/name'
+facebook_name: Name
+github_url: 'http://github.com/name'
+github_name: Name

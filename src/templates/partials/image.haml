@@ -1,0 +1,20 @@
+-# Flexible image helper
+-# We can specify additional text or small size
+-# {{> image src="neki.jpg" }}
+-# {{> image src="neki_small.jpg" size="small" }}
+-# {{> image src="neki_half.jpg" size="half" }}
+-# {{> image src="neki_third.jpg" size="third" }}
+-# {{> image src="neki_quarter.jpg" size="quarter" }}
+-# {{> image src="neki_lol.jpg" text="This explanation" }}
+-# {{> image src="neki_mini.jpg" size="small" text="Smallish image" }}
+
+{{# image_wrapper size=this.size }}
+
+{{> img src=this.src }}
+
+{{# if this.text }}
+%br
+%span {{ this.text }}
+{{/ if }}
+
+{{/ image_wrapper }}

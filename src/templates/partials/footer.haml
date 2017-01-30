@@ -1,0 +1,15 @@
+%section#footer
+	.nav-inner
+		.contact
+			.alignment-wrap
+				.email
+					%a{:href => "mailto:{{ @root.site.contact_address }}"}
+						{{ @root.site.contact_address }}
+				.fb
+					facebook @
+					%a{:href => "{{ @root.site.facebook_url }}"}
+						{{ @root.site.facebook_name }}
+				.github
+					github @
+					%a{:href => "{{ @root.site.github_url }}"}
+						{{ @root.site.github_name }}

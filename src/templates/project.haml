@@ -1,0 +1,109 @@
+!!! 5
+%html.no-js{:lang => "en"}
+
+	%head
+		%title {{ name }} by {{ site.company }} | {{ site.tagline }}
+
+		%meta{property: 'og:title', content: '{{ name }} by {{ site.company }}'}
+
+		{{#if description}}
+		%meta{property: 'og:description', content: '{{ chain "markdown" "strip_html" description }}'}
+		{{/if}}
+
+		{{#if cover_image}}
+		%meta{property: 'og:image', content: 'http://{{ site.asset_host }}/{{ encode paths.name }}/{{ encode cover_image }}?w=1200&fm=jpg'}
+		{{/if}}
+
+		{{> head }}
+
+	%body.page-project
+
+		{{> header }}
+		{{# responsive_image cover_image }}
+		.cover.imgix-fluid{data: {src: "{{ remote_src }}"}}
+		{{/ responsive_image }}
+		.cover-overlay
+
+		%section#page
+
+			%article.project-body
+				-# .name
+				-# 	%h1
+				-# 		{{ name }}
+				.basic-info
+					.statement
+						%h1 {{ statement }}
+
+					.client-year
+						%p {{ client }}, {{ year }}
+
+				{{#if description }}
+				.description
+					{{ markdown this.description }}
+				{{/if}}
+
+				{{# if live-url }}
+				.live-url
+					%p
+						%a{href: "{{ live-url }}"} {{ live-url }}
+				{{/ if }}
+
+				.tags
+					%p{class: '{{ tags_width }}'}
+						{{# each tags }}
+						%span.label {{ this }}
+						{{/ each }}
+
+				.contents
+					{{{ contents }}}
+
+				-# {{# if team }}
+				-# .team
+				-# 	%h3 Team
+				-# 	%ul
+				-# 		{{# each team }}
+				-# 		%li
+				-# 			%a{href: '/people/{{ this.name }}'}
+				-# 				{{ this.name }} ({{ this.role }})
+				-# 		{{/ each }}
+				-# {{/ if }}
+
+			{{# if next }}
+
+			{{# responsive_image next next.cover_image }}
+			#autoAdvance.next-project.auto-advance.imgix-fluid{data: {src: "{{ remote_src }}", scroll: 'autoAdvance', countdown: 8}}
+				{{/ responsive_image }}
+				%a.overlay{href: "/projects/{{ next.paths.name }}"}
+				.content
+					.content-row
+						.statement
+							%h2 {{ next.statement }}
+						.client-year
+							%p Next project > {{ next.client }}
+						.description
+							%p
+								{{ next.description }}
+
+			{{ else }}
+			{{# each collections.projects }}
+			{{# if @first }}
+			{{# responsive_image this this.cover_image }}
+			.next-project.last-project.imgix-fluid{data: {src: "{{ remote_src }}"}}
+				{{/ responsive_image }}
+				%a.overlay{href: "/projects/{{ this.paths.name }}"}
+				.content
+					.content-row
+						.text
+							%h3.name
+								{{ this.name }}
+							%p.info
+								Go back to the first project
+						.app
+							%span
+								&nbsp;
+			{{/ if }}
+			{{/ each }}
+			{{/ if }}
+		{{> footer }}
+
+		{{> scripts }}

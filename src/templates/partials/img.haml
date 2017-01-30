@@ -1,0 +1,8 @@
+-# Creates a responsive image, relative to the current project
+-# If we display neki.jpg within /content/projects/pop-up-dom
+-# {{> img src="neki.jpg" }}
+-# we should get <img class='imgix-fluid' src='/assets/projects/pop-up-dom/neki.jpg' data-src='ljudje.imgix.net/...'>
+{{# responsive_image this.src }}
+.wrap
+	%img.imgix-fluid{src: '/assets/pixel.png', width: "{{ width }}", height: "{{ height }}", data: {src: 'http://{{ @root.site.asset_host }}/{{ src }}?fit=crop&fm=jpg', local: '{{ @root.paths.name }}/{{ name }}'}}
+{{/ responsive_image }}

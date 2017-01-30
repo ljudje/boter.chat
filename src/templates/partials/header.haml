@@ -1,0 +1,11 @@
+#nav{:class => "{{ nav_color }}"}
+	.nav-inner
+		.logo
+			%a.logo{:href => "/"}
+		.contact
+			%a.mail{:href => "mailto:{{ @root.site.contact_address }}"} {{ @root.site.contact_address }}
+
+#popup-nav.hidden
+	.nav-inner
+		.logo
+			%a.logo{href: "/#{'#'}{{ @root.paths.name }}"}

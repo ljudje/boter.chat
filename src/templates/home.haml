@@ -1,0 +1,26 @@
+!!! 5
+%html.no-js{:lang => "en"}
+	
+	%head
+		%title {{ site.company }} | {{ site.tagline }}
+		
+		{{> head }}
+		
+
+	%body.page-home
+
+		{{> header }}
+
+		%section#intro
+			%section#id
+				.statement#index
+					%h1
+						%em Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt turpis arcu, lacinia tempor mauris tempus non. Nulla libero turpis, eleifend et tellus quis, laoreet lobortis enim. Curabitur ultricies massa vitae nunc rutrum venenatis. Morbi nec ante eu est feugiat imperdiet. Nulla in mattis neque. Nam et justo venenatis diam rhoncus placerat quis a mi. Vestibulum id velit dictum, ultrices dui a, mollis justo. Fusce vel neque vel nisl ornare vestibulum id eget mauris. In finibus nibh enim, at fermentum ligula tempor a. Cras nec nulla et metus consectetur convallis. Aliquam eget fringilla diam, eu vulputate sem. Ut ac cursus leo. Donec condimentum ipsum eget orci dictum, sit amet varius urna blandit.
+		%section#page
+
+			%article.cover-view
+				{{{ contents }}}
+
+		{{> footer }}
+
+		{{> scripts }}
