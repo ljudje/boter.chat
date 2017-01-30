@@ -12,12 +12,7 @@
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-	var tracking_id;
-	if (window.location.href.indexOf('people.ooo') > -1) {
-		tracking_id = 'UA-43735632-9';
-	} else {
-		tracking_id = 'UA-43735632-8';
-	};
+	var tracking_id = '{{ site.analytics_id }}';
 
 	ga('create', tracking_id, 'auto');
 	ga('send', 'pageview');
