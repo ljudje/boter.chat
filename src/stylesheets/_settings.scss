@@ -57,6 +57,7 @@ $foundation-palette: (
   alert: #cc4b37,
 );
 @include add-foundation-colors;
+$tertiary-color: lighten($primary-color, 6);
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
