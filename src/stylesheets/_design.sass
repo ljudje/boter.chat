@@ -126,15 +126,13 @@ i
     -webkit-animation-delay: -0.16s
     animation-delay: -0.16s
 
-.chatblock.bot
-  .spinner
-    .bounce1, .bounce2, .bounce3
-      background-color: white
+.spinner.bot
+  .bounce1, .bounce2, .bounce3
+    background-color: white
 
-.chatblock.user
-  .spinner
-    .bounce1, .bounce2, .bounce3
-      background-color: #0976F2
+.spinner.user
+  .bounce1, .bounce2, .bounce3
+    background-color: #0976F2
 
 @-webkit-keyframes sk-bouncedelay
   0%, 80%, 100%
@@ -215,7 +213,10 @@ i
 .bubble, .link, .linklist
   &.shown
     visibility: visible
-    animation: appear 1500ms linear both
+    animation: appear 1000ms linear both
+
+.spinner
+  position: absolute
 
 .spinner.shown
   visibility: visible
@@ -258,7 +259,7 @@ i
   &:hover
     text-decoration: underline
 
-.chatblock, .inputblock
+.chatblock, .inputblock, .spinnerblock
   display: block
   width: 100%
   clear: both
@@ -293,17 +294,22 @@ i
   left: -9px
   top: 15px
 
-.user
-  .bubble, .spinner
-    float: right
-    background: white
-    color: #0976F2
+.user .bubble, .spinner.user
+  float: right
+  background: white
+  color: #0976F2
 
-.bot
-  .bubble, .spinner
-    float: left
-    background: lighten($primary-color, 6)
-    color: white
+.bot .bubble, .spinner.bot
+  float: left
+  background: lighten($primary-color, 6)
+  color: white
+
+.spinner.bot, .spinner.user
+  float: none
+.spinner.bot
+  left: 0
+.spinner.user
+  right: 0
 
 .bot .bubble, .user .bubble
   max-width: 90%
