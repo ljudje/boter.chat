@@ -9,7 +9,7 @@ IMAGE_MS = 1000
 FIRST_MESSAGES = 6
 BOTTOM_GAP_PX = $(window).width() > 480 ? 70 : 0
 
-$spinner = '<div class="spinner bubble shown"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>'
+$spinner = '<div class="spinner shown"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>'
 running = false
 
 remaining = []

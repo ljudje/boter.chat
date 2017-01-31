@@ -156,7 +156,7 @@ i
 ////////////         CONVO         ////////////
 ///////////////////////////////////////////////
 
-.bubble, .link, .linklist
+.bubble, .link, .linklist, .spinner
   float: left
   clear: both
   border-radius: 6px
@@ -168,8 +168,9 @@ i
   &.shown
     visibility: visible
 
-.bubble
-  background: lighten($primary-color, 6)
+.spinner.shown
+  visibility: visible
+  animation: fadein 300ms linear
 
 .link
   background: $secondary-color
@@ -243,13 +244,17 @@ i
   left: -10px
   top: 25px
 
-.user .bubble
-  float: right
-  background: white
-  color: #0976F2
+.user
+  .bubble, .spinner
+    float: right
+    background: white
+    color: #0976F2
 
-.bot .bubble
-  float: left
+.bot
+  .bubble, .spinner
+    float: left
+    background: lighten($primary-color, 6)
+    color: white
 
 .bot .bubble, .user .bubble
   max-width: 90%
