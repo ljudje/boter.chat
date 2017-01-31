@@ -2,8 +2,8 @@
 # # # BUBBLES # # # # # # # #
 # # # # # # # # # # # # # # #
 
-TYPING_MS = 4
-DELAY_MS = 500
+TYPING_MS = 5
+DELAY_MS = 1000
 IMAGE_MS = 1000
 
 FIRST_MESSAGES = 6
