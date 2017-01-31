@@ -16,6 +16,12 @@ remaining = []
 scheduled = []
 displayed = []
 
+applySpinner = (bubble) ->
+	$(bubble).before($spinner)
+
+removeSpinner = (bubble) ->
+	$(bubble).prev('.spinner').remove()
+
 show = (bubble) ->
 	# Inform the system that we're running
 	running = true
@@ -25,12 +31,12 @@ show = (bubble) ->
 	shouldShowNext = $bubble.hasClass('with-link') or $bubble.hasClass('with-linklist')
 	
 	# Show spinner 
-	$bubble.before($spinner)
+	applySpinner(bubble)
 
 	# Appear logic
 	appear = ->
 		# Remove spinner
-		$bubble.prev('.spinner').remove()
+		removeSpinner(bubble)
 
 		# Show the bubble
 		$bubble.addClass('shown')
