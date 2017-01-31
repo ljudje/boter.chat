@@ -7,12 +7,11 @@
 %meta{:content => "yes", :name => "apple-mobile-web-app-capable"}/
 %meta{:content => "user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui", :name => "viewport"}/
 
+%meta{:content => "{{ site.tagline }} - {{ site.company }}", :name => "title"}/
 %meta{:content => "{{ author }}", :name => "author"}/
-
 %meta{:content => "{{ keywords }}", :name => "keywords"}/
 %meta{:content => "{{ description }}", :name => "description"}/
-%meta{:content => "{{ title }}", :property => "og:title"}/
+%meta{:content => "{{ site.tagline }} - {{ site.company }}", :property => "og:title"}/
 %meta{:content => "website", :property => "og:type"}/
 %meta{:content => "{{ description }}", :property => "og:description"}/
 %meta{:content => "{{ url }}/assets/media/meta.png", :property => "og:image"}/
-%meta{:content => "{{ name }} - {{ title }}", :property => "og:title"}/
