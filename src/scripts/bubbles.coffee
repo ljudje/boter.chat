@@ -80,7 +80,7 @@ assignRemaining = ->
 	remaining = $('.bubble').get()
 
 scheduleFirstFew = ->
-	for bubble in remaining[0..FIRST_MESSAGES]
+	for bubble in remaining[0..(FIRST_MESSAGES - 1)]
 		schedule(bubble)
 
 handleScroll = (e) ->
