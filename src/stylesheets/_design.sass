@@ -104,6 +104,8 @@ i
 ///////////////////////////////////////////////
 //////////         ANIMATIONS         /////////
 ///////////////////////////////////////////////
+
+// Spinner - typing now animation
 .spinner
   width: 90px
   text-align: center
@@ -153,12 +155,6 @@ i
 
 
 
-@keyframes fadein
-  0%
-    opacity: 0
-  100%
-    opacity: 1
-
 // Convo chat bubble appear animation
 @keyframes appear
   0%
@@ -198,6 +194,21 @@ i
   100%
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 
+
+// Fade in animation
+@keyframes fadein
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+
+
+////////////////////////////
+//// SVG ILLUSTRATIONS  ////
+////////////////////////////
+
+// All illustrated characters and their shadows/limbs
 .shown
   & #modelcek-1
     animation: modelcek-1 3000ms cubic-bezier(0.5, 0, 0.5, 1) alternate
@@ -246,25 +257,12 @@ i
 
 
 
+// Illustrated character eyes
 .shown
   & #oko-1, & #oko-2
     animation: oko 2000ms cubic-bezier(0.5, 0, 0.5, 1)
     animation-iteration-count: 4
     animation-fill-mode: forwards
-
-// @keyframes oko
-//   0%
-//     transform: translate3d(0px, 0px, 0px)
-//   20%
-//     transform: translate3d(0px, 0px, 0px)
-//   25%
-//     transform: translate3d(0px, -15px, 0px)
-//   45%
-//     transform: translate3d(0px, -15px, 0px)
-//   50%
-//     transform: translate3d(0px, 0px, 0px)
-//   100%
-//     transform: translate3d(0px, 0px, 0px)
 
 @keyframes oko
   0%
@@ -277,6 +275,7 @@ i
     transform: translate3d(-5px, 0px, 0px)
   100%
     transform: translate3d(5px, 0px, 0px)
+
 
 
 ///////////////////////////////////////////////
