@@ -19,20 +19,18 @@ show = (bubble) ->
 	# Inform the system that we're running
 	running = true
 
-	# Memoize conditions
+	# Memoize bubble & showNext condition
 	$bubble = $(bubble)
-	shouldSpin = $bubble.parent().hasClass('bot')
 	shouldShowNext = $bubble.hasClass('with-link') or $bubble.hasClass('with-linklist')
 	
-	# Show spinner if necessary
-	if shouldSpin
-		$bubble.before($spinner)
+	# Show spinner 
+	$bubble.before($spinner)
 
 	# Appear logic
 	appear = ->
-		# Remove spinner if necessary
-		if shouldSpin
-			$bubble.prev('.spinner').remove()
+		# Remove spinner
+		$bubble.prev('.spinner').remove()
+
 		# Show the bubble
 		$bubble.addClass('shown')
 		# Show the link/linklist if necessary
@@ -48,16 +46,11 @@ show = (bubble) ->
 			# Show the next one
 			showScheduled()
 
-	# If this is the bot speaking
-	if shouldSpin
-		# Schedule a proportionately long typing delay
-		chars = $bubble.text().replace(' ', '').length
-		typingTime = TYPING_MS * chars
-		setTimeout(appear, typingTime + DELAY_MS)
-	# If it's the user speaking
-	else
-		# Just show the bubble
-		setTimeout(appear, DELAY_MS)
+	# Schedule a proportionately long typing delay
+	chars = $bubble.text().replace(' ', '').length
+	typingTime = TYPING_MS * chars
+		
+	setTimeout(appear, typingTime + DELAY_MS)
 
 showScheduled = ->
 	# Remove next bubble from the scheduled array
