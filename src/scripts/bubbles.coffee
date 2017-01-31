@@ -68,7 +68,7 @@ show = (bubble) ->
 		chars = $bubble.text().trim().replace(' ', '').length
 		typingTime = TYPING_MS * chars
 		# If the bubble contains an image
-		if $bubble.children('img').length > 0
+		if $bubble.children('img').length > 0 or $bubble.children('svg').length > 0
 			# Increase the typing time
 			typingTime += IMAGE_MS
 		# Schedule the appearance
