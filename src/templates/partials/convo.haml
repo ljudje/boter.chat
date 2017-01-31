@@ -168,8 +168,13 @@
         Mislim, da je čas, da si tudi sam omislim bota!
 
     .chatblock.bot
-      .bubble
-        Me veseli! Spodaj mi lahko pustiš svojo telefonsko stevilko ali email naslov in te obvestim, ko se odprejo nova mesta. Lep pozdrav!
+      .bubble.with-link
+        -# Me veseli! Spodaj mi lahko pustiš svojo telefonsko stevilko ali email naslov in te obvestim, ko se odprejo nova mesta. Lep pozdrav!
+        Me veseli! Komaj čakam, da ti sporočim naslednje korake.
 
-    .inputblock.user
-      %input/
+      .link
+        %a{href: 'mailto:hi@boter.chat'} Pošlji mi email na hi@boter.chat
+
+    /
+      .inputblock.user
+        %input/
