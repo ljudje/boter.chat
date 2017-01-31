@@ -199,8 +199,7 @@ i
   100%
     opacity: 1
 
-/* Generated with Bounce.js. Edit at https://goo.gl/CCdJ3A */
-@keyframes altappear 
+@keyframes altappear
   0%
     opacity: 0
     transform: matrix3d(0.5, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 1, 0, 0, 30, 0, 1)
@@ -238,16 +237,44 @@ i
   83.98%
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
   100%
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) 
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 
+
+#modelcek-1
+  animation: modelcek-1 3000ms cubic-bezier(0.5, 0, 0.5, 1) infinite alternate
 #modelcek-2
-  animation: float 200ms linear infinite both
+  animation: modelcek-2 3000ms cubic-bezier(0.5, 0, 0.5, 1) infinite alternate
+  animation-delay: 200ms
+#modelcek-3
+  animation: modelcek-3 3000ms cubic-bezier(0.5, 0, 0.5, 1) infinite alternate
+#Fill-25, #Fill-26, #Fill-27
+  animation: shadows 3000ms cubic-bezier(0.5, 0, 0.5, 1) infinite alternate
 
-@keyframes float
+@keyframes modelcek-1
   0%
-    transform: translate(235.000000px, 66.000000px)
+    transform: translate(76px, 35px)
   100%
-    transform: translate(235.000000px, 85.000000px)
+    transform: translate(76px, 45px)
+
+@keyframes modelcek-2
+  0%
+    transform: translate(235px, 50px)
+  100%
+    transform: translate(235px, 70px)
+
+@keyframes modelcek-3
+  0%
+    transform: translate(400px, 37px)
+  100%
+    transform: translate(400px, 50px)
+
+@keyframes shadows
+  0%
+    opacity: 0.5
+  100%
+    opacity: 1
+
+
 
 
 ///////////////////////////////////////////////
