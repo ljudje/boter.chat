@@ -95,7 +95,7 @@ show = (bubble) ->
 	# If the bubble is in field of view
 	else
 		# Schedule the spinner
-		setTimeout(spin, DELAY_MS/2 + (Math.random() * DELAY_MS/2))
+		setTimeout(spin, (DELAY_MS / 2) + (Math.random() * (DELAY_MS / 2)))
 		# Schedule a proportionately long typing delay
 		chars = $bubble.text().trim().replace(' ', '').length
 		typingTime = TYPING_MS * chars
