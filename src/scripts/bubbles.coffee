@@ -8,19 +8,51 @@ IMAGE_MS = 1000
 
 FIRST_MESSAGES = 6
 BOTTOM_GAP_PX = $(window).width() > 480 ? 70 : 0
+MARGIN_PX = 10
 
-$spinner = '<div class="spinner shown"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>'
+spinner = '<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>'
+$userSpinner = undefined
+$botSpinner = undefined
 running = false
+convoOffsetTop = undefined
 
 remaining = []
 scheduled = []
 displayed = []
 
+
+createSpinners = ->
+	$userSpinner = $(spinner).addClass('user')
+	$botSpinner = $(spinner).addClass('bot')
+	$('.convo .spinnerblock').append($userSpinner)
+	$('.convo .spinnerblock').append($botSpinner)
+
 applySpinner = (bubble) ->
-	$(bubble).before($spinner)
+	# Application logic
+	apply = ($spinner) ->
+		# Align with the bubble
+		$spinner.css(top: getBubbleTop(bubble) - convoOffsetTop - MARGIN_PX)
+		# Show spinner
+		$spinner.addClass('shown')
+
+	# If we're applying to a bot bubble
+	if $(bubble).parent().hasClass('bot')
+		apply($botSpinner)
+	# If we're applying to a user
+	else
+		apply($userSpinner)
 
 removeSpinner = (bubble) ->
-	$(bubble).prev('.spinner').remove()
+	# Removal logic
+	remove = ($spinner) ->
+		$spinner.removeClass('shown')
+
+	# If we're applying to a bot bubble
+	if $(bubble).parent().hasClass('bot')
+		remove($botSpinner)
+	# If we're applying to a user
+	else
+		remove($userSpinner)
 
 show = (bubble) ->
 	# Inform the system that we're running
@@ -57,7 +89,7 @@ show = (bubble) ->
 			showScheduled()
 
 	# If the bubble isn't visible anymore
-	if getBubbleBottom(bubble) < $(window).scrollTop()
+	if getBubbleTop(bubble) < $(window).scrollTop()
 		# Show it immediately, and omit the spinner
 		appear(false)
 	# If the bubble is in field of view
@@ -130,9 +162,17 @@ handleScroll = (e) ->
 observeScroll = ->
 	$(window).on('scroll', handleScroll)
 
+calculateDimensions = ->
+	BOTTOM_GAP_PX = $(window).width() > 480 ? 70 : 0
+	convoOffsetTop = $('.convo').offset().top
+
 module.exports =
 	init: ->
 		$(document).ready ->
+			calculateDimensions()
+			createSpinners()
 			assignRemaining()
 			scheduleFirstFew()
 			observeScroll()
+		$(window).resize ->
+			calculateDimensions()
