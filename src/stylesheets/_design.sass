@@ -117,11 +117,36 @@ i
   display: block
   width: 100%
   clear: both
+  position: relative
 
   img
     width: 80%
     margin: 10% auto
     display: block
+
+.chatblock.user .bubble.shown:before
+  display: block
+  position: absolute
+  content: ' '
+  width: 0
+  height: 0
+  border-top: 10px solid transparent
+  border-bottom: 10px solid transparent
+  border-left: 10px solid white
+  right: -10px
+  top: 25px
+
+.chatblock.bot .bubble.shown:before
+  display: block
+  position: absolute
+  content: ' '
+  width: 0
+  height: 0
+  border-top: 10px solid transparent
+  border-bottom: 10px solid transparent
+  border-right: 10px solid #0976F2
+  left: -10px
+  top: 25px
 
 .user .bubble
   float: right
