@@ -65,7 +65,7 @@ show = (bubble) ->
 		# Schedule the spinner
 		setTimeout(spin, DELAY_MS/3 + (Math.random() * DELAY_MS/3))
 		# Schedule a proportionately long typing delay
-		chars = $bubble.text().replace(' ', '').length
+		chars = $bubble.text().trim().replace(' ', '').length
 		typingTime = TYPING_MS * chars
 		# If the bubble contains an image
 		if $bubble.children('img').length > 0
