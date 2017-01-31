@@ -73,27 +73,29 @@ i
     top: 4rem
     bottom: 4rem
 
-  h3
-    font-size: 100%
-
-  +breakpoint(small only)
-    .column:last-child
+  .column
+    h3
+      font-size: 100%
+    &:last-child
       h3
         padding-top: 1.33rem
-
-  a
-    display: block
-    color: $white
-
-  .copyright
-    padding-top: 1.33rem
+    +breakpoint(large)
+      &:last-child
+        h3
+          padding-top: 0
 
     a
-      display: inline-block
-    img
-      padding:
-        left: 0.75rem
-        right: 0.75rem
+      display: block
+      color: $white
+
+    .copyright
+      padding-top: 1.33rem
+      a
+        display: inline-block
+      img
+        padding:
+          left: 0.75rem
+          right: 0.75rem
 
 
 
