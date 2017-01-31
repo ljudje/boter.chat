@@ -30,13 +30,16 @@ show = (bubble) ->
 	$bubble = $(bubble)
 	shouldShowNext = $bubble.hasClass('with-link') or $bubble.hasClass('with-linklist')
 	
-	# Show spinner 
-	applySpinner(bubble)
+	# Spinner logic
+	spin = ->
+		# Show spinner 
+		applySpinner(bubble)
 
 	# Appear logic
-	appear = ->
-		# Remove spinner
-		removeSpinner(bubble)
+	appear = (spin=true) ->
+		unless !spin
+			# Remove spinner
+			removeSpinner(bubble)
 
 		# Show the bubble
 		$bubble.addClass('shown')
@@ -55,10 +58,12 @@ show = (bubble) ->
 
 	# If the bubble isn't visible anymore
 	if getBubbleBottom(bubble) < $(window).scrollTop()
-		# Show it immediately
-		appear()
+		# Show it immediately, and omit the spinner
+		appear(false)
 	# If the bubble is in field of view
 	else
+		# Schedule the spinner
+		setTimeout(spin, DELAY_MS/3 + (Math.random() * DELAY_MS/3))
 		# Schedule a proportionately long typing delay
 		chars = $bubble.text().replace(' ', '').length
 		typingTime = TYPING_MS * chars
