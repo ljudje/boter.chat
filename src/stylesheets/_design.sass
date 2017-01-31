@@ -238,40 +238,48 @@ i
   100%
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 
-
-#modelcek-1
-  animation: modelcek-1 3000ms cubic-bezier(0.5, 0, 0.5, 1) infinite alternate
-#modelcek-2
-  animation: modelcek-2 3000ms cubic-bezier(0.5, 0, 0.5, 1) infinite alternate
-  animation-delay: 200ms
-#modelcek-3
-  animation: modelcek-3 3000ms cubic-bezier(0.5, 0, 0.5, 1) infinite alternate
-#Fill-25, #Fill-26, #Fill-27
-  animation: shadows 3000ms cubic-bezier(0.5, 0, 0.5, 1) infinite alternate
-  transform-origin: center center
+.shown
+  & #modelcek-1
+    animation: modelcek-1 3000ms cubic-bezier(0.5, 0, 0.5, 1) alternate
+    animation-iteration-count: 3
+    animation-fill-mode: forwards
+  & #modelcek-2
+    animation: modelcek-2 3000ms cubic-bezier(0.5, 0, 0.5, 1) alternate
+    animation-iteration-count: 3
+    animation-fill-mode: forwards
+    animation-delay: 200ms
+  & #modelcek-3
+    animation: modelcek-3 3000ms cubic-bezier(0.5, 0, 0.5, 1) alternate
+    animation-iteration-count: 3
+    animation-fill-mode: forwards
+  & #Fill-25, & #Fill-26, & #Fill-27
+    animation: shadows 3000ms cubic-bezier(0.5, 0, 0.5, 1) alternate
+    animation-iteration-count: 3
+    animation-fill-mode: forwards
+    transform-origin: center center
 
 @keyframes modelcek-1
   0%
-    transform: translate3d(76px, 35px, 0px)
+    transform: translate3d(76px, 55px, 0px)
   100%
-    transform: translate3d(76px, 45px, 0px)
+    transform: translate3d(76px, 65px, 0px)
 
 @keyframes modelcek-2
   0%
-    transform: translate3d(235px, 50px, 0px)
-  100%
     transform: translate3d(235px, 70px, 0px)
+  100%
+    transform: translate3d(235px, 90px, 0px)
 
 @keyframes modelcek-3
   0%
-    transform: translate3d(400px, 37px, 0px)
+    transform: translate3d(400px, 57px, 0px)
   100%
-    transform: translate3d(400px, 50px, 0px)
+    transform: translate3d(400px, 70px, 0px)
 
 @keyframes shadows
   0%
-    opacity: 0.5
     transform: scale(0.66)
+    opacity: 0.5
   100%
     transform: scale(1)
     opacity: 1
