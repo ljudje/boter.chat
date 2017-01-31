@@ -269,7 +269,7 @@ i
     margin: 10% auto
     display: block
 
-.chatblock.user .bubble.shown:before
+.chatblock.user .bubble.shown:first-child:before
   display: block
   position: absolute
   content: ' '
@@ -278,10 +278,10 @@ i
   border-top: 10px solid transparent
   border-bottom: 10px solid transparent
   border-left: 10px solid white
-  right: -10px
-  top: 25px
+  right: -9px
+  top: 15px
 
-.chatblock.bot .bubble.shown:before
+.chatblock.bot .bubble.shown:first-child:before
   display: block
   position: absolute
   content: ' '
@@ -290,8 +290,8 @@ i
   border-top: 10px solid transparent
   border-bottom: 10px solid transparent
   border-right: 10px solid lighten($primary-color, 6)
-  left: -10px
-  top: 25px
+  left: -9px
+  top: 15px
 
 .user
   .bubble, .spinner
