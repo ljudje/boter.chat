@@ -4,6 +4,7 @@
 
 TYPING_MS = 5
 DELAY_MS = 1000
+IMAGE_MS = 1500
 
 FIRST_MESSAGES = 6
 BOTTOM_GAP_PX = 50
@@ -49,6 +50,9 @@ show = (bubble) ->
 	# Schedule a proportionately long typing delay
 	chars = $bubble.text().replace(' ', '').length
 	typingTime = TYPING_MS * chars
+	# If the bubble contains an image
+	if $bubble.children('img').length > 0
+		typingTime += IMAGE_MS
 		
 	setTimeout(appear, typingTime + DELAY_MS)
 
