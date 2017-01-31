@@ -2,9 +2,9 @@
 # # # BUBBLES # # # # # # # #
 # # # # # # # # # # # # # # #
 
-TYPING_MS = 5
-DELAY_MS = 1000
-IMAGE_MS = 1500
+TYPING_MS = 4
+DELAY_MS = 500
+IMAGE_MS = 1000
 
 FIRST_MESSAGES = 6
 BOTTOM_GAP_PX = $(window).width() > 480 ? 70 : 0
