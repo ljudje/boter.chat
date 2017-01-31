@@ -48,7 +48,7 @@ show = (bubble) ->
 		if scheduled.length == 0
 			# Inform the system that we stopped
 			running = false
-		# If thre are scheduled bubbles left
+		# If there are scheduled bubbles left
 		else
 			# Show the next one
 			showScheduled()
