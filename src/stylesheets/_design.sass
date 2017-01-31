@@ -200,7 +200,7 @@ i
     opacity: 1
 
 /* Generated with Bounce.js. Edit at https://goo.gl/wmFd9d */
-@keyframes altappear 
+@keyframes altappear
   0%
     opacity: 0
     transform: matrix3d(0.75, 0, 0, 0, 0, 0.75, 0, 0, 0, 0, 1, 0, 0, 40, 0, 1)
@@ -248,29 +248,32 @@ i
   animation: modelcek-3 3000ms cubic-bezier(0.5, 0, 0.5, 1) infinite alternate
 #Fill-25, #Fill-26, #Fill-27
   animation: shadows 3000ms cubic-bezier(0.5, 0, 0.5, 1) infinite alternate
+  transform-origin: center center
 
 @keyframes modelcek-1
   0%
-    transform: translate(76px, 35px)
+    transform: translate3d(76px, 35px, 0px)
   100%
-    transform: translate(76px, 45px)
+    transform: translate3d(76px, 45px, 0px)
 
 @keyframes modelcek-2
   0%
-    transform: translate(235px, 50px)
+    transform: translate3d(235px, 50px, 0px)
   100%
-    transform: translate(235px, 70px)
+    transform: translate3d(235px, 70px, 0px)
 
 @keyframes modelcek-3
   0%
-    transform: translate(400px, 37px)
+    transform: translate3d(400px, 37px, 0px)
   100%
-    transform: translate(400px, 50px)
+    transform: translate3d(400px, 50px, 0px)
 
 @keyframes shadows
   0%
     opacity: 0.5
+    transform: scale(0.66)
   100%
+    transform: scale(1)
     opacity: 1
 
 
