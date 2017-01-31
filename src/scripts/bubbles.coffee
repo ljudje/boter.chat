@@ -86,18 +86,28 @@ scheduleFirstFew = ->
 	for bubble in remaining[0..(FIRST_MESSAGES - 1)]
 		schedule(bubble)
 
-handleScroll = (e) ->
-	# Calculate the bottom of the page
+getScrollBottom = ->
 	scrollTop = $(window).scrollTop()
 	windowHeight = $(window).height()
-	scrollBottom = scrollTop + windowHeight - BOTTOM_GAP_PX
+	return (scrollTop + windowHeight - BOTTOM_GAP_PX)
+
+getBubbleTop = (bubble) ->
+	return $(bubble).offset().top
+
+getBubbleBottom = (bubble) ->
+	bubbleTop = $(bubble).offset().top
+	bubbleHeight = $(bubble).height()
+	return (bubbleTop + bubbleHeight)
+	
+handleScroll = (e) ->
+	# Calculate the bottom of the page
+	scrollBottom = getScrollBottom()
 
 	# Collect all remaining&visible buttons
 	visible = []
 	for bubble in remaining
 		# Get the bubbles top coordinteac
-		$bubble = $(bubble)
-		bubbleTop = $bubble.offset().top
+		bubbleTop = getBubbleTop(bubble)
 		# If the bubble is visible
 		if bubbleTop < scrollBottom
 			visible.push(bubble)
