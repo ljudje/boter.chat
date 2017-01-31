@@ -64,8 +64,9 @@ show = (bubble) ->
 		typingTime = TYPING_MS * chars
 		# If the bubble contains an image
 		if $bubble.children('img').length > 0
+			# Increase the typing time
 			typingTime += IMAGE_MS
-		
+		# Schedule the appearance
 		setTimeout(appear, typingTime + DELAY_MS)
 
 showScheduled = ->
