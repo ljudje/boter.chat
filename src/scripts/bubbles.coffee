@@ -53,14 +53,20 @@ show = (bubble) ->
 			# Show the next one
 			showScheduled()
 
-	# Schedule a proportionately long typing delay
-	chars = $bubble.text().replace(' ', '').length
-	typingTime = TYPING_MS * chars
-	# If the bubble contains an image
-	if $bubble.children('img').length > 0
-		typingTime += IMAGE_MS
+	# If the bubble isn't visible anymore
+	if getBubbleBottom(bubble) < $(window).scrollTop()
+		# Show it immediately
+		appear()
+	# If the bubble is in field of view
+	else
+		# Schedule a proportionately long typing delay
+		chars = $bubble.text().replace(' ', '').length
+		typingTime = TYPING_MS * chars
+		# If the bubble contains an image
+		if $bubble.children('img').length > 0
+			typingTime += IMAGE_MS
 		
-	setTimeout(appear, typingTime + DELAY_MS)
+		setTimeout(appear, typingTime + DELAY_MS)
 
 showScheduled = ->
 	# Remove next bubble from the scheduled array
