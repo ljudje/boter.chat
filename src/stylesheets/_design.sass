@@ -338,6 +338,12 @@ i
 ////////////         CONVO         ////////////
 ///////////////////////////////////////////////
 
+.column.convo
+  +breakpoint(small only)
+    padding:
+      left: $grid-column-gutter
+      right: $grid-column-gutter
+
 .bubble, .link, .linklist, .spinner
   float: left
   clear: both
@@ -380,8 +386,16 @@ i
 
   li
     +grid-column (1 of 1)
+    padding:
+      left: 0
+      right: 0
+      bottom: $grid-column-gutter
+    &:last-of-type
+      padding-bottom: 0
+
     +breakpoint(medium)
       +grid-column (1 of 3)
+      padding-bottom: 0
 
     a
       border-radius: $global-radius
