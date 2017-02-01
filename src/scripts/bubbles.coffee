@@ -8,7 +8,7 @@ IMAGE_MS = 1000
 
 FIRST_MESSAGES = 6
 BOTTOM_GAP_PX = $(window).width() > 480 ? 70 : 0
-MARGIN_PX = 10
+MARGIN_PX = 5
 
 spinner = '<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>'
 $userSpinner = undefined
@@ -61,10 +61,10 @@ show = (bubble) ->
 	# Memoize bubble & showNext condition
 	$bubble = $(bubble)
 	shouldShowNext = $bubble.hasClass('with-link') or $bubble.hasClass('with-linklist')
-	
+
 	# Spinner logic
 	spin = ->
-		# Show spinner 
+		# Show spinner
 		applySpinner(bubble)
 
 	# Appear logic
@@ -76,7 +76,7 @@ show = (bubble) ->
 		# Show the bubble
 		$bubble.addClass('shown')
 		# Show the link/linklist if necessary
-		if shouldShowNext 
+		if shouldShowNext
 			$bubble.next().addClass('shown')
 
 		# If we showed all the scheduled bubbles
@@ -142,7 +142,7 @@ getBubbleBottom = (bubble) ->
 	bubbleTop = $(bubble).offset().top
 	bubbleHeight = $(bubble).height()
 	return (bubbleTop + bubbleHeight)
-	
+
 handleScroll = (e) ->
 	# Calculate the bottom of the page
 	scrollBottom = getScrollBottom()

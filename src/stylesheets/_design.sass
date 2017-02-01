@@ -203,7 +203,7 @@ i
     opacity: 1
 
 
-// Convo chat bubble linklist animations (special links)
+// Convo chat bubble linklist animation
 .linklist
   img
     transform: matrix3d(0.75, 0, 0, 0, 0, 0.75, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
@@ -341,8 +341,8 @@ i
 .bubble, .link, .linklist, .spinner
   float: left
   clear: both
-  border-radius: 6px
-  margin: 8px 0
+  border-radius: $global-radius
+  margin: calc(#{$grid-column-gutter} / 2) 0
   padding: 16px 24px
   visibility: hidden
 
@@ -366,27 +366,37 @@ i
   background: $secondary-color
 
 .linklist
-  margin: 0
-  padding: 0 0 10px 0
+  +grid-row
+  padding: 0
   list-style: none
 
+  width: 90%
+  +breakpoint(medium)
+    width: calc(75% + #{$grid-column-gutter})
+    margin-left: calc(-#{$grid-column-gutter} / 2)
+  +breakpoint(large)
+    width: calc(66% + #{$grid-column-gutter})
+
+
   li
-    float: left
-    background: $secondary-color
-    color: $secondary-color
-    margin: 0 10px 0 0
-    padding: 20px
-    border-radius: 6px
+    +grid-column (1 of 1)
+    +breakpoint(medium)
+      +grid-column (1 of 3)
 
     a
+      border-radius: $global-radius
+      background: $secondary-color
+      color: $secondary-color
       display: list-item
-      width: 180px
       text-decoration: none
       color: #0976F2
 
-      img
-        width: 100%
-        margin: 0 0 10px 0
+      div
+        padding: $grid-column-gutter
+
+        img
+          width: 100%
+          margin: 0 0 10px 0
 
 .link a
   color: #0976F2
@@ -404,6 +414,9 @@ i
   width: 100%
   clear: both
   position: relative
+  padding:
+    top: $grid-column-gutter
+    bottom: $grid-column-gutter
 
   img
     width: 80%
