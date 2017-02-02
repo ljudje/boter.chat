@@ -238,14 +238,14 @@ i
     animation-fill-mode: forwards
     transform-origin: left bottom
   & #haend-2
-    animation: haend-2 1000ms cubic-bezier(0.25, 0, 0.8, 1) alternate
+    animation: haend-2 500ms cubic-bezier(0.32, 0.04, 0.57, 1.26) alternate
     animation-iteration-count: 1
     animation-fill-mode: forwards
-    animation-delay: 750ms
-    transform: translate3d(258px, 92px, 0px) rotate(96deg)
+    animation-delay: 1000ms
+    transform: translate3d(258px, 92px, 0px) rotate(90deg)
     transform-origin: left bottom
   & #haend-3
-    animation: haend-3 750ms cubic-bezier(0.25, 0, 0.8, 1) alternate
+    animation: haend-3 500ms cubic-bezier(0.32, 0.04, 0.57, 1.26) alternate
     animation-iteration-count: 1
     animation-fill-mode: forwards
     transform: translate3d(123px, 180px, 0px) rotate(-80deg)
@@ -291,17 +291,13 @@ i
 
 @keyframes haend-2
   0%
-    transform: translate3d(258px, 92px, 0px) rotate(96deg)
-  75%
-    transform: translate3d(258px, 92px, 0px) rotate(-3deg)
+    transform: translate3d(258px, 92px, 0px) rotate(90deg)
   100%
     transform: translate3d(258px, 92px, 0px) rotate(0deg)
 
 @keyframes haend-3
   0%
     transform: translate3d(123px, 180px, 0px) rotate(-80deg)
-  75%
-    transform: translate3d(93px, 180px, 0px) rotate(3deg)
   100%
     transform: translate3d(93px, 180px, 0px) rotate(0deg)
 
@@ -314,7 +310,7 @@ i
     animation-fill-mode: forwards
 .shown
   & #oko-3, & #oko-4
-    animation: oko-2 2000ms linear
+    animation: oko-2 1500ms linear
     animation-iteration-count: 1
     animation-fill-mode: forwards
 
