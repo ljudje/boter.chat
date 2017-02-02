@@ -230,15 +230,15 @@ handleSubmit = (input) ->
 		# Submit to Spreadsheet
 		data = $('#inputblock').serialize()
 		request = $.post
-            url: "https://script.google.com/macros/s/AKfycbxLhkGxx97M4IJYzydSBRGowDqlHDuv3JFGLxkEPp9JIvnv4ms/exec"
-            data:
-            	message: input
-            	hasEmail: validateEmail(input)
-            	hasPhoneNumber: validatePhoneNumber(input)
- 		# Show the rest of the convo
+			url: "https://script.google.com/macros/s/AKfycbxLhkGxx97M4IJYzydSBRGowDqlHDuv3JFGLxkEPp9JIvnv4ms/exec"
+			data:
+				message: input
+				hasEmail: validateEmail(input)
+				hasPhoneNumber: validatePhoneNumber(input)
+		# Show the rest of the convo
 		appendUserMessage(input)
-    	appendBotResponse()
-    # If the input is invalid
+		appendBotResponse()
+	# If the input is invalid
 	else
 		# Show an error
 		$('.error').text("Sporočilo naj vsebuje email ali telefonsko številko")
