@@ -97,7 +97,7 @@ show = (bubble) ->
 	# If the bubble is in field of view
 	else
 		# Schedule the spinner
-		setTimeout(spin, (DELAY_MS / 2) + (Math.random() * (DELAY_MS / 2)))
+		setTimeout(spin, (DELAY_MS * 0.5) + (Math.random() * (DELAY_MS * 0.5)))
 		# Schedule a proportionately long typing delay
 		chars = $bubble.text().trim().replace(' ', '').length
 		typingTime = TYPING_MS * chars
@@ -198,7 +198,7 @@ appendBotResponse = (msg) ->
 	$bubble = $botResponse.find('.bubble')
 	remaining.push($bubble)
 	schedule($bubble)
-	
+
 
 handleSubmit = (input) ->
 	if validate(input)
@@ -211,7 +211,7 @@ handleSubmit = (input) ->
 	else
 		$('.error').text("Sporočilo naj vsebuje email ali telefonsko številko")
 
-	
+
 handleKeyDown = (e) ->
 	if e.keyCode == 13
 		e.preventDefault()
