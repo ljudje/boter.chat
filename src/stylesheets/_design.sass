@@ -578,10 +578,9 @@ i
     visibility: visible
     animation: appearDown 1000ms linear both
 
-.chatblock.user
-  .bubble.shown
-    visibility: visible
-    animation: appearUp 1000ms linear both
+.chatblock.user .bubble.shown, #inputblock.shown
+  visibility: visible
+  animation: appearUp 1000ms linear both
 
 .link
   &.shown
@@ -739,6 +738,7 @@ i
     max-width: 66%
 
 #inputblock
+  visibility: hidden
   overflow: hidden
   input, a
     display: block

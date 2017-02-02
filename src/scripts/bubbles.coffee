@@ -128,7 +128,7 @@ schedule = (bubble) ->
 		showScheduled()
 
 assignRemaining = ->
-	remaining = $('.bubble').get()
+	remaining = $('.bubble, #inputblock').get()
 
 scheduleFirstFew = ->
 	for bubble in remaining[0..(FIRST_MESSAGES - 1)]
