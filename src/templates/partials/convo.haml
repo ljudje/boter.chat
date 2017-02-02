@@ -175,12 +175,10 @@
 
     .chatblock.bot
       .bubble.with-link
-        -# Me veseli! Spodaj mi lahko pustiš svojo telefonsko stevilko ali email naslov in te obvestim, ko se odprejo nova mesta. Lep pozdrav!
-        Me veseli! Komaj čakam, da ti sporočim naslednje korake.
+        Me veseli! Spodaj mi lahko pustiš svojo telefonsko stevilko ali email naslov in te obvestim, ko se odprejo nova mesta. Lep pozdrav!
 
-      .link
-        %a{href: 'mailto:hi@boter.chat'} Pošlji mi email na hi@boter.chat
-
-    /
-      .inputblock.user
-        %input/
+    #inputblock
+      %input.message>/
+      %a{href: '#'} Pošlji
+      .error
+        &nbsp;
