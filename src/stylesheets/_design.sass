@@ -70,18 +70,32 @@ i
 ///////////////////////////////////////////////
 .footer
   background: $tertiary-color
-  margin-top: 4rem
-  padding:
-    top: 4rem
-    bottom: 4rem
 
-  .column
+  margin-top: 2rem
+  padding:
+    top: 2rem
+    bottom: 2rem
+  +breakpoint(medium)
+    margin-top: 4rem
+    padding:
+      top: 4rem
+      bottom: 4rem
+
+  .content
+    +grid-column(1 of 1)
+    padding:
+      left: $grid-column-gutter * 2.5
+      right: $grid-column-gutter * 2.5
+
+    +breakpoint(medium)
+      +grid-column(1 of 2)
+
     h3
       font-size: 100%
     &:last-child
       h3
         padding-top: 1.33rem
-    +breakpoint(large)
+    +breakpoint(medium)
       &:last-child
         h3
           padding-top: 0
@@ -92,13 +106,41 @@ i
 
     .copyright
       padding-top: 1.33rem
+
       a
         display: inline-block
+        +breakpoint(small only)
+          &:nth-of-type(1)
+            width: 111px
+            height: 17px
+          &:nth-of-type(2)
+            width: 58px
+            height: 17px
+
+      span
+        vertical-align: middle
       img
         padding:
-          left: 0.75rem
-          right: 0.75rem
+          left: 0.25rem
+          right: 0.25rem
+        +breakpoint(small2)
+          width: 100%
+        +breakpoint(medium)
+          padding:
+            left: 0.25rem
+            right: 0.25rem
+        +breakpoint(large)
+          padding:
+            left: 0.5rem
+            right: 0.5rem
 
+  // Footer hax so ooo logo doesn't fall into line 2
+  +breakpoint(medium only)
+    .row
+      overflow: hidden
+    .copyright
+      width: 55vw
+      overflow: hidden
 
 
 
@@ -470,7 +512,7 @@ i
   clear: both
   border-radius: $global-radius
   margin: calc(#{$grid-column-gutter} / 2) 0
-  padding: 16px 24px
+  padding: calc(#{$grid-column-gutter} * 1.2) calc(#{$grid-column-gutter} * 1.5)
   visibility: hidden
 
   svg
@@ -510,7 +552,6 @@ i
   +grid-row
   padding: 0
   list-style: none
-
   width: 90%
   +breakpoint(medium)
     width: calc(75% + #{$grid-column-gutter})
