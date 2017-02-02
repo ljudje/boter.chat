@@ -99,7 +99,7 @@ show = (bubble) ->
 		# Obtain timing settings
 		customDelay = $(bubble).parent().data('delay') * 1000 || 0
 		# Schedule the spinner
-		setTimeout(spin, (DELAY_MS * 0.5) + (Math.random() * (DELAY_MS * 0.5)))
+		setTimeout(spin, (customDelay + (DELAY_MS * 0.5) + (Math.random() * (DELAY_MS * 0.5))))
 		# Schedule a proportionately long typing delay
 		chars = $bubble.text().trim().replace(' ', '').length
 		typingTime = TYPING_MS * chars
