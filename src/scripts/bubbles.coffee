@@ -33,7 +33,7 @@ applySpinner = (bubble) ->
 		# Align with the bubble
 		$spinner.css(top: getBubbleTop(bubble) - convoOffsetTop - MARGIN_PX)
 		# Show spinner
-		$spinner.addClass('shown')
+		$spinner.addClass('shown').removeClass('hidden')
 
 	# If we're applying to a bot bubble
 	if $(bubble).parent().hasClass('bot')
@@ -45,7 +45,7 @@ applySpinner = (bubble) ->
 removeSpinner = (bubble) ->
 	# Removal logic
 	remove = ($spinner) ->
-		$spinner.removeClass('shown')
+		$spinner.removeClass('shown').addClass('hidden')
 
 	# If we're applying to a bot bubble
 	if $(bubble).parent().hasClass('bot')

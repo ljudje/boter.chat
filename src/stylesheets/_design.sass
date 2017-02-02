@@ -281,12 +281,18 @@ i
   100%
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 
-// Fade in animation
+// Fade animations
 @keyframes fadein
   0%
     opacity: 0
   100%
     opacity: 1
+
+@keyframes fadeout
+  0%
+    opacity: 1
+  100%
+    opacity: 0
 
 
 ////////////////////////////
@@ -598,11 +604,16 @@ i
 
 .spinner
   position: absolute
-
+  transition: opacity 1000ms
+  opacity: 0
 .spinner.shown
   visibility: visible
   animation: fadein 300ms linear
-
+  opacity: 1
+.spinner.hidden
+  visibility: visible
+  opacity: 0
+  animation: fadeout 80ms linear
 .link
   background: $secondary-color
 
