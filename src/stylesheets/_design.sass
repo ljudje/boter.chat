@@ -32,8 +32,13 @@ i
   font-weight: 700
   text-align: center
   margin:
-    bottom: .5rem
-    top: .5rem
+    bottom: $grid-column-gutter / 2
+    top: $grid-column-gutter / 2
+
+  +breakpoint(small2)
+    margin:
+      bottom: $grid-column-gutter * 2
+      top: $grid-column-gutter * 2
 
   a
     color: $secondary-color
@@ -42,19 +47,18 @@ i
     text-align: left
 
   svg
-    padding-right: .5rem
+    vertical-align: middle
+
     +breakpoint(small only)
-      width: 125px
+      width: 180px
       display: block
       margin: 0 auto
-      padding-top: 1rem
+      margin-top: $grid-column-gutter * 2
 
   +breakpoint(medium)
     margin:
-      bottom: 1.5rem
-      top: 1.5rem
-    svg
-      padding-right: 1rem
+      bottom: $grid-column-gutter * 2
+      top: $grid-column-gutter * 2
 
   +breakpoint(xlarge)
     margin:
@@ -64,7 +68,7 @@ i
       position: fixed
       margin:
         top: -1rem
-        left: -6.25rem
+        left: -5.75rem
 
 
 ///////////////////////////////////////////////
