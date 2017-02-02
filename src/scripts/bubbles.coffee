@@ -204,10 +204,14 @@ appendUserMessage = (msg) ->
 	# Schedule
 	schedule($bubble)
 
-appendBotResponse = (msg) ->
+appendBotResponse = (isPhoneNumber = false) ->
 	# Template
 	html = '<div class="chatblock bot"><div class="bubble">'
-	html += 'Ksaf Kedušes \\o/</div></div>'
+	if isPhoneNumber
+		msg = 'Hvala za številko. Se slišiva kmalu!'
+	else
+		msg = 'Hvala. Kmalu dobiš pošto!'
+	html += msg + '</div></div>'
 
 	$botResponse = $(html)
 	$botResponse.insertBefore($('#inputblock'))
@@ -237,7 +241,7 @@ handleSubmit = (input) ->
 				hasPhoneNumber: validatePhoneNumber(input)
 		# Show the rest of the convo
 		appendUserMessage(input)
-		appendBotResponse()
+		appendBotResponse(validatePhoneNumber(input))
 	# If the input is invalid
 	else
 		# Show an error
