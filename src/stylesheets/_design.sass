@@ -511,16 +511,18 @@ i
 .bubble, .link, .linklist, .spinner
   float: left
   clear: both
-  border-radius: $global-radius
-  margin: calc(#{$grid-column-gutter} / 2) 0
-  padding: calc(#{$grid-column-gutter} * 1.2) calc(#{$grid-column-gutter} * 1.5)
   visibility: hidden
 
   svg
     max-width: 100%
     height: 100%
 
-.bubble, .link
+.bubble, .link, .linklist, .spinner, #inputblock input, #inputblock a
+  margin: ($grid-column-gutter/2) 0
+  border-radius: $global-radius
+  padding: ($grid-column-gutter * 1.2) ($grid-column-gutter * 1.5)
+
+.bubble, .link, .linklist
   &.shown
     visibility: visible
     animation: appear 1000ms linear both
