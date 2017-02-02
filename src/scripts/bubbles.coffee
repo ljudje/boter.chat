@@ -225,7 +225,7 @@ handleSubmit = (input) ->
 		$('#inputblock input').prop('disabled': true)
 		$('#inputblock a').off('click')
 		# Remove form
-		$('#inputblock').addClass('hidden')
+		$('#inputblock').hide() # addClass('hidden')
 		# Submit to Spreadsheet
 		data = $('#inputblock').serialize()
 		# Using spreadsheet as DB API: https://goo.gl/rzuHMF
