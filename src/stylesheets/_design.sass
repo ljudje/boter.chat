@@ -673,11 +673,13 @@ i
     max-width: 66%
 
 #inputblock
+  overflow: hidden
   input, a
-    display: inline-block
-    line-height: 1.4
+    display: block
+    line-height: 23px
     border-width: 0
   input
+    float: left
     width: calc(100% - 8rem)
     background: white
     color: $primary-color
@@ -688,6 +690,7 @@ i
   input:focus
     outline: none !important
   a
+    float: right
     width: 8rem
     color: $primary-color
     background: $secondary-color
