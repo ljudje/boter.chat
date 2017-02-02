@@ -219,7 +219,7 @@ handleKeyDown = (e) ->
 		$input = $(e.currentTarget)
 		handleSubmit($input.val())
 	else
-		$('.error').text('')
+		$('.error').html('&nbsp;')
 
 handleSendClick = (e) ->
 	e.preventDefault()
