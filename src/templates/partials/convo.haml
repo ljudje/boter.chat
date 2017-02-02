@@ -181,8 +181,8 @@
       .bubble.with-link
         Me veseli! Spodaj mi lahko pustiš svojo telefonsko stevilko ali email naslov in te obvestim, ko se odprejo nova mesta. Lep pozdrav!
 
-    #inputblock.immediate
-      %input.message>/
+    %form#inputblock.immediate
+      %input#message{name: 'message'}>/
       %a{href: '#'} Pošlji
       .error
         &nbsp;

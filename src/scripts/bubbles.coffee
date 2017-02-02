@@ -170,16 +170,25 @@ calculateDimensions = ->
 	BOTTOM_GAP_PX = $(window).width() > 480 ? 70 : 0
 	convoOffsetTop = $('.convo').offset().top
 
-validate = (input) ->
-	valid = false
-
-	isPhoneNumber = /\b(((00)|(\+))(\d{3})\D?0?\D?((\d{2}))|(\d{3}))\D?(\d{3})\D?(\d{3})\b/g
+validateEmail = (input) ->
 	isEmail = /\b[\w-\.]+@([\w-]+\.)+[\w-]{2,4}\b/g
+	if input.match(isEmail)
+		true
+	else
+		false
 
-	if input.match(isEmail) or input.match(isPhoneNumber)
-		valid = true
+validatePhoneNumber = (input) ->
+	isPhoneNumber = /\b(((00)|(\+))(\d{3})\D?0?\D?((\d{2}))|(\d{3}))\D?(\d{3})\D?(\d{3})\b/g
+	if input.match(isPhoneNumber)
+		true
+	else
+		false
 
-	return valid
+validate = (input) ->
+	if validateEmail(input) or validatePhoneNumber(input)
+		true
+	else
+		false
 
 appendUserMessage = (msg) ->
 	html = '<div class="chatblock user"><div class="bubble immediate">'
@@ -203,24 +212,41 @@ appendBotResponse = (msg) ->
 
 
 handleSubmit = (input) ->
+	# If the input is valid
 	if validate(input)
+		# Lock form
 		$('.error').text('')
+		$('#inputblock input').prop('disabled': true)
+		$('#inputblock a').off('click')
+		# Remove form
+		$('#inputblock').addClass('hidden')
+		# Submit to Spreadsheet
+		data = $('#inputblock').serialize()
+		request = $.post
+            url: "https://script.google.com/macros/s/AKfycbxLhkGxx97M4IJYzydSBRGowDqlHDuv3JFGLxkEPp9JIvnv4ms/exec"
+            data:
+            	message: input
+            	hasEmail: validateEmail(input)
+            	hasPhoneNumber: validatePhoneNumber(input)
+ 		# Show the rest of the convo
 		appendUserMessage(input)
-		appendBotResponse()
-		# Remove input
-		$('#inputblock').hide()
-
+    	appendBotResponse()
+    # If the input is invalid
 	else
+		# Show an error
 		$('.error').text("Sporočilo naj vsebuje email ali telefonsko številko")
 
 
 handleKeyDown = (e) ->
+	# If the user pressed enter
 	if e.keyCode == 13
 		e.preventDefault()
-
+		# Handle submission
 		$input = $(e.currentTarget)
 		handleSubmit($input.val())
+	# If Another key was presed
 	else
+		# Clear error message
 		$('.error').html('&nbsp;')
 
 handleSendClick = (e) ->
@@ -228,7 +254,9 @@ handleSendClick = (e) ->
 	handleSubmit($('#inputblock input').val())
 
 handleInput = () ->
+	# Listen for keypresses
 	$('#inputblock input').on('keydown', handleKeyDown)
+	# And button clicks
 	$('#inputblock a').on('click', handleSendClick)
 
 module.exports =
