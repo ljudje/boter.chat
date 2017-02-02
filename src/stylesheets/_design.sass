@@ -681,7 +681,9 @@ i
     height: 3.33rem
   input
     float: left
-    width: calc(100% - 8rem)
+    width: calc(100% - 6rem)
+    +breakpoint(small2)
+      width: calc(100% - 8rem)
     background: white
     color: $primary-color
     border-top-right-radius: 0
@@ -692,7 +694,9 @@ i
     outline: none !important
   a
     float: left
-    width: 8rem
+    width: 6rem
+    +breakpoint(small2)
+      width: 8rem
     color: $primary-color
     background: $secondary-color
     border-top-left-radius: 0
