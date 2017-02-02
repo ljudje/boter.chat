@@ -167,6 +167,7 @@ observeScroll = ->
 	$(window).on('scroll', handleScroll)
 
 calculateDimensions = ->
+	# Only apply a bottom gap on screens wider than 480px
 	BOTTOM_GAP_PX = $(window).width() > 480 ? 70 : 0
 	convoOffsetTop = $('.convo').offset().top
 
@@ -191,23 +192,29 @@ validate = (input) ->
 		false
 
 appendUserMessage = (msg) ->
+	# Template
 	html = '<div class="chatblock user"><div class="bubble immediate">'
 	html += msg + '</div></div>'
 
 	$userResponse = $(html)
 	$userResponse.insertBefore($('#inputblock'))
 	$bubble = $userResponse.find('.bubble')
+	# Add to remaining stack
 	remaining.push($bubble)
+	# Schedule
 	schedule($bubble)
 
 appendBotResponse = (msg) ->
+	# Template
 	html = '<div class="chatblock bot"><div class="bubble">'
 	html += 'Ksaf Kedušes \\o/</div></div>'
 
 	$botResponse = $(html)
 	$botResponse.insertBefore($('#inputblock'))
 	$bubble = $botResponse.find('.bubble')
+	# Add to remaining stack
 	remaining.push($bubble)
+	# Schedule
 	schedule($bubble)
 
 
@@ -261,12 +268,26 @@ handleInput = () ->
 
 module.exports =
 	init: ->
+		
 		$(document).ready ->
+			# Bubbles shouldn't display all the way to the bottom on large screens
+			# Measure whether a ~70px gap should be taken into account
 			calculateDimensions()
+			# There is a bot and a user spinner, that follow the conversation
+			# Create them in the dom
 			createSpinners()
+			# Bubbles are taken off the remaining stack when scheduled
+			# Collect the bubbles onto the remaining array
 			assignRemaining()
+			# Schedule the introductory conversation
+			# It prompts the user to scroll down
 			scheduleFirstFew()
+			# Every time a user scrolls, we should check whether any bubbles
+			# can be displayed.
 			observeScroll()
+			# Handle ENTER keypress in the #inputblock
 			handleInput()
+
 		$(window).resize ->
+			# Reconsider whether a gap at the bottom is required
 			calculateDimensions()
