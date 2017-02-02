@@ -89,7 +89,9 @@ show = (bubble) ->
 			showScheduled()
 
 	# If the bubble isn't visible anymore
-	if getBubbleTop(bubble) < $(window).scrollTop()
+	if getBubbleTop(bubble) < $(window).scrollTop() or
+	# the bubble is set to show immediately
+	$(bubble).hasClass('immediate')
 		# Show it immediately, and omit the spinner
 		appear(false)
 	# If the bubble is in field of view
@@ -166,6 +168,67 @@ calculateDimensions = ->
 	BOTTOM_GAP_PX = $(window).width() > 480 ? 70 : 0
 	convoOffsetTop = $('.convo').offset().top
 
+validate = (input) ->
+	valid = false
+
+	isPhoneNumber = /\b(((00)|(\+))(\d{3})\D?0?\D?((\d{2}))|(\d{3}))\D?(\d{3})\D?(\d{3})\b/g
+	isEmail = /\b[\w-\.]+@([\w-]+\.)+[\w-]{2,4}\b/g
+
+	if input.match(isEmail) or input.match(isPhoneNumber)
+		valid = true
+
+	return valid
+
+appendUserMessage = (msg) ->
+	html = '<div class="chatblock user"><div class="bubble immediate">'
+	html += msg + '</div></div>'
+
+	$userResponse = $(html)
+	$userResponse.insertBefore($('#inputblock'))
+	$bubble = $userResponse.find('.bubble')
+	remaining.push($bubble)
+	schedule($bubble)
+
+appendBotResponse = (msg) ->
+	html = '<div class="chatblock bot"><div class="bubble">'
+	html += 'Ksaf Kedušes \\o/</div></div>'
+
+	$botResponse = $(html)
+	$botResponse.insertBefore($('#inputblock'))
+	$bubble = $botResponse.find('.bubble')
+	remaining.push($bubble)
+	schedule($bubble)
+	
+
+handleSubmit = (input) ->
+	if validate(input)
+		$('.error').text('')
+		appendUserMessage(input)
+		appendBotResponse()
+		# Remove input
+		$('#inputblock').hide()
+
+	else
+		$('.error').text("Sporočilo naj vsebuje email ali telefonsko številko")
+
+	
+handleKeyDown = (e) ->
+	if e.keyCode == 13
+		e.preventDefault()
+
+		$input = $(e.currentTarget)
+		handleSubmit($input.val())
+	else
+		$('.error').text('')
+
+handleSendClick = (e) ->
+	e.preventDefault()
+	handleSubmit($('#inputblock input').val())
+
+handleInput = () ->
+	$('#inputblock input').on('keydown', handleKeyDown)
+	$('#inputblock a').on('click', handleSendClick)
+
 module.exports =
 	init: ->
 		$(document).ready ->
@@ -174,5 +237,6 @@ module.exports =
 			assignRemaining()
 			scheduleFirstFew()
 			observeScroll()
+			handleInput()
 		$(window).resize ->
 			calculateDimensions()
