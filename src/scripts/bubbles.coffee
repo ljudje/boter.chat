@@ -96,6 +96,8 @@ show = (bubble) ->
 		appear(false)
 	# If the bubble is in field of view
 	else
+		# Obtain timing settings
+		customDelay = $(bubble).parent().data('delay') * 1000 || 0
 		# Schedule the spinner
 		setTimeout(spin, (DELAY_MS * 0.5) + (Math.random() * (DELAY_MS * 0.5)))
 		# Schedule a proportionately long typing delay
@@ -106,7 +108,7 @@ show = (bubble) ->
 			# Increase the typing time
 			typingTime += IMAGE_MS
 		# Schedule the appearance
-		setTimeout(appear, typingTime + DELAY_MS)
+		setTimeout(appear, customDelay + typingTime + DELAY_MS)
 
 showScheduled = ->
 	# Remove next bubble from the scheduled array
