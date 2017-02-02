@@ -217,7 +217,6 @@ appendBotResponse = (msg) ->
 	# Schedule
 	schedule($bubble)
 
-
 handleSubmit = (input) ->
 	# If the input is valid
 	if validate(input)
@@ -229,6 +228,7 @@ handleSubmit = (input) ->
 		$('#inputblock').addClass('hidden')
 		# Submit to Spreadsheet
 		data = $('#inputblock').serialize()
+		# Using spreadsheet as DB API: https://goo.gl/rzuHMF
 		request = $.post
 			url: "https://script.google.com/macros/s/AKfycbxLhkGxx97M4IJYzydSBRGowDqlHDuv3JFGLxkEPp9JIvnv4ms/exec"
 			data:
