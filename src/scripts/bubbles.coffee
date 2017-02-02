@@ -221,7 +221,7 @@ handleSubmit = (input) ->
 	# If the input is valid
 	if validate(input)
 		# Lock form
-		$('.error').text('')
+		$('.error').addclass('valid') unless $('.error').hasClass('valid')
 		$('#inputblock input').prop('disabled': true)
 		$('#inputblock a').off('click')
 		# Remove form
@@ -241,7 +241,9 @@ handleSubmit = (input) ->
 	# If the input is invalid
 	else
 		# Show an error
-		$('.error').text("Sporočilo naj vsebuje email ali telefonsko številko")
+		$('.error')
+			.removeClass('valid')
+			.text("Sporočilo naj vsebuje email ali telefonsko številko")
 
 
 handleKeyDown = (e) ->
@@ -254,7 +256,7 @@ handleKeyDown = (e) ->
 	# If Another key was presed
 	else
 		# Clear error message
-		$('.error').html('&nbsp;')
+		$('.error').addClass('valid') unless $('.error').hasClass('valid')
 
 handleSendClick = (e) ->
 	e.preventDefault()

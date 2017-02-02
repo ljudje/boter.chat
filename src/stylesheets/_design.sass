@@ -518,8 +518,12 @@ i
     border-bottom-left-radius: 0
     text-align: center
   .error
+    opacity: 1
+    transition: opacity 200ms
     padding:
       top: $grid-column-gutter
       bottom: $grid-column-gutter
       left: $grid-column-gutter * 1.5
       font-weight: normal
+  .error.valid
+    opacity: 0
