@@ -588,6 +588,7 @@ i
     animation: appearDown 1000ms linear both
 
 .linklist
+  position: relative
   &.shown
     visibility: visible
     li:nth-of-type(1)
@@ -599,6 +600,34 @@ i
     li:nth-of-type(3)
       animation: appearDown 1000ms linear both
       animation-delay: 900ms
+
+
+  .soon::after
+    content: "Soon"
+    position: absolute
+    font-size: 80%
+    font-weight: 700
+    text-transform: lowercase
+    background: $primary-color
+    color: $secondary-color
+    border-radius: $global-radius
+    padding: 0px 6px 3px 6px
+    transition: scale 150ms ease
+
+    bottom: $grid-column-gutter * 2
+    right: $grid-column-gutter
+
+    +breakpoint(medium)
+      top: $grid-column-gutter
+      right: $grid-column-gutter * 1.75
+      bottom: auto
+    +breakpoint(large)
+      top: auto
+      bottom: $grid-column-gutter
+
+  .soon:active::after
+    transform: scale(1.25)
+
 
 
 .spinner
