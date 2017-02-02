@@ -199,8 +199,9 @@ i
 
 
 // Convo chat bubble appear animation
+
 // https://goo.gl/wmFd9d
-@keyframes appear
+@keyframes appearUp
   0%
     opacity: 0
     transform: matrix3d(0.75, 0, 0, 0, 0, 0.75, 0, 0, 0, 0, 1, 0, 0, 40, 0, 1)
@@ -238,6 +239,45 @@ i
   100%
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 
+// https://goo.gl/3mSvmb
+@keyframes appearDown
+
+  0%
+    transform: matrix3d(0.75, 0, 0, 0, 0, 0.75, 0, 0, 0, 0, 1, 0, 0, -40, 0, 1)
+  2.4%
+    transform: matrix3d(0.831, 0, 0, 0, 0, 0.831, 0, 0, 0, 0, 1, 0, 0, -25.19, 0, 1)
+  4.1%
+    transform: matrix3d(0.872, 0, 0, 0, 0, 0.872, 0, 0, 0, 0, 1, 0, 0, -16.788, 0, 1)
+  4.73%
+    transform: matrix3d(0.885, 0, 0, 0, 0, 0.885, 0, 0, 0, 0, 1, 0, 0, -14.179, 0, 1)
+  8.11%
+    transform: matrix3d(0.934, 0, 0, 0, 0, 0.934, 0, 0, 0, 0, 1, 0, 0, -4.22, 0, 1)
+  9.38%
+    transform: matrix3d(0.947, 0, 0, 0, 0, 0.947, 0, 0, 0, 0, 1, 0, 0, -1.998, 0, 1)
+  12.11%
+    transform: matrix3d(0.966, 0, 0, 0, 0, 0.966, 0, 0, 0, 0, 1, 0, 0, 0.737, 0, 1)
+  14.11%
+    transform: matrix3d(0.976, 0, 0, 0, 0, 0.976, 0, 0, 0, 0, 1, 0, 0, 1.538, 0, 1)
+  16.12%
+    transform: matrix3d(0.983, 0, 0, 0, 0, 0.983, 0, 0, 0, 0, 1, 0, 0, 1.734, 0, 1)
+  18.77%
+    transform: matrix3d(0.989, 0, 0, 0, 0, 0.989, 0, 0, 0, 0, 1, 0, 0, 1.509, 0, 1)
+  27.23%
+    transform: matrix3d(0.997, 0, 0, 0, 0, 0.997, 0, 0, 0, 0, 1, 0, 0, 0.314, 0, 1)
+  28.15%
+    transform: matrix3d(0.998, 0, 0, 0, 0, 0.998, 0, 0, 0, 0, 1, 0, 0, 0.236, 0, 1)
+  37.54%
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.041, 0, 1)
+  38.34%
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.041, 0, 1)
+  60.56%
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.001, 0, 1)
+  75%
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  82.78%
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+  100%
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 
 // Fade in animation
 @keyframes fadein
@@ -518,26 +558,36 @@ i
     height: 100%
 
 .bubble, .link, .linklist, .spinner, #inputblock input, #inputblock a
-  margin: ($grid-column-gutter/2) 0
+  margin: $grid-column-gutter/2 0
   border-radius: $global-radius
-  padding: ($grid-column-gutter * 1.2) ($grid-column-gutter * 1.5)
+  padding: $grid-column-gutter*1.2 $grid-column-gutter*1.5
 
-.bubble, .link
+.chatblock.bot
+  .bubble.shown
+    visibility: visible
+    animation: appearDown 1000ms linear both
+    
+.chatblock.user
+  .bubble.shown
+    visibility: visible
+    animation: appearUp 1000ms linear both
+
+.link
   &.shown
     visibility: visible
-    animation: appear 1000ms linear both
+    animation: appearDown 1000ms linear both
 
 .linklist
   &.shown
     visibility: visible
     li:nth-of-type(1)
-      animation: appear 1000ms linear both
+      animation: appearDown 1000ms linear both
       animation-delay: 300ms
     li:nth-of-type(2)
-      animation: appear 1000ms linear both
+      animation: appearDown 1000ms linear both
       animation-delay: 600ms
     li:nth-of-type(3)
-      animation: appear 1000ms linear both
+      animation: appearDown 1000ms linear both
       animation-delay: 900ms
 
 
