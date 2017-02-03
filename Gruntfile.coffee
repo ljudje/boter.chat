@@ -93,6 +93,14 @@ module.exports = (grunt) ->
 					dest: 'build/assets'
 				}]
 
+			scripts:
+				files: [{
+					expand: true
+					cwd: 'src/scripts'
+					src: '{,*/}*.js'
+					dest: 'build/assets/js'
+				}]
+
 
 		haml:
 			compile:
@@ -135,10 +143,10 @@ module.exports = (grunt) ->
 	# Subtasks
 	grunt.registerTask('wipe', ['clean'])
 	grunt.registerTask('styles', ['sass', 'exec:clean_css'])
-	grunt.registerTask('scripts', ['coffee', 'browserify'])
+	grunt.registerTask('scripts', ['copy:scripts', 'coffee', 'browserify'])
 	# grunt.registerTask('scripts', ['coffee', 'browserify', 'exec:uglify'])
 	grunt.registerTask('templates', ['haml'])
-	grunt.registerTask('content', ['exec:metalsmith', 'copy'])
+	grunt.registerTask('content', ['exec:metalsmith', 'copy:assets'])
 	grunt.registerTask('optimization', [
 		'useminPrepare'
 		# 'concat'
