@@ -254,8 +254,8 @@ handleSubmit = (input) ->
 	if validate(input)
 		# Lock form
 		$('.error').addclass('valid') unless $('.error').hasClass('valid')
-		$('#inputblock input').prop('disabled': true)
 		$('#inputblock a').off('click')
+		$('#inputblock input#message').prop('disabled': true)
 		# Remove form
 		$('#inputblock').hide() # addClass('hidden')
 		# Submit to Spreadsheet
@@ -293,11 +293,11 @@ handleKeyDown = (e) ->
 
 handleSendClick = (e) ->
 	e.preventDefault()
-	handleSubmit($('#inputblock input').val())
+	handleSubmit($('input#message').val())
 
 handleInput = () ->
 	# Listen for keypresses
-	$('#inputblock input').on('keydown', handleKeyDown)
+	$('#inputblock input#message').on('keydown', handleKeyDown)
 	# And button clicks
 	$('#inputblock a').on('click', handleSendClick)
 
