@@ -13,9 +13,16 @@ MARGIN_PX = 5
 spinner = '<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>'
 $userSpinner = undefined
 $botSpinner = undefined
-running = false
-convoOffsetTop = undefined
 
+# Used by scheduler to see whether bubble animatins are running
+running = false
+# Used to position spinners correctly 
+convoOffsetTop = undefined
+# Used to track whether bot has animated
+# mouth for all the sppech bubbles
+talkAnimations = 0
+
+# Main state management queues and stacks
 remaining = []
 scheduled = []
 displayed = []
@@ -58,9 +65,10 @@ show = (bubble) ->
 	# Inform the system that we're running
 	running = true
 
-	# Memoize bubble & showNext condition
+	# Memoize $bubble, showNext & boterTalk condition
 	$bubble = $(bubble)
 	shouldShowNext = $bubble.hasClass('with-link') or $bubble.hasClass('with-linklist')
+	shouldTalkBoter = $bubble.parent().hasClass('bot')
 
 	# Spinner logic
 	spin = ->
@@ -68,7 +76,7 @@ show = (bubble) ->
 		applySpinner(bubble)
 
 	# Appear logic
-	appear = (spin=true) ->
+	appear = (spin = true, talkingDelay = 1) ->
 		unless !spin
 			# Remove spinner
 			removeSpinner(bubble)
@@ -78,6 +86,18 @@ show = (bubble) ->
 		# Show the link/linklist if necessary
 		if shouldShowNext
 			$bubble.next().addClass('shown')
+
+		if shouldTalkBoter and talkingDelay != 0
+			talkAnimations += 1
+			unless $('.logo').hasClass('talking')
+				$('.logo').addClass('talking')
+
+			stopTalking = ->
+				talkAnimations -= 1
+				if talkAnimations == 0 and $('.logo').hasClass('talking')
+					$('.logo').removeClass('talking')
+
+			setTimeout(stopTalking, talkingDelay)
 
 		# If we showed all the scheduled bubbles
 		if scheduled.length == 0
@@ -98,8 +118,9 @@ show = (bubble) ->
 	else
 		# Obtain timing settings
 		customDelay = $(bubble).parent().data('delay') * 1000 || 0
+		spinnerDelay = (customDelay + (DELAY_MS * 0.5) + (Math.random() * (DELAY_MS * 0.5)))
 		# Schedule the spinner
-		setTimeout(spin, (customDelay + (DELAY_MS * 0.5) + (Math.random() * (DELAY_MS * 0.5))))
+		setTimeout(spin, spinnerDelay)
 		# Schedule a proportionately long typing delay
 		chars = $bubble.text().trim().replace(' ', '').length
 		typingTime = TYPING_MS * chars
@@ -108,7 +129,14 @@ show = (bubble) ->
 			# Increase the typing time
 			typingTime += IMAGE_MS
 		# Schedule the appearance
-		setTimeout(appear, customDelay + typingTime + DELAY_MS)
+		typingDelay = customDelay + typingTime + DELAY_MS
+		performAppearance = ->
+			if $bubble.find('svg').length > 0
+				talkingDelay = 0
+			else
+				talkingDelay = typingDelay
+			appear(true, talkingDelay)
+		setTimeout(performAppearance, typingDelay)
 
 showScheduled = ->
 	# Remove next bubble from the scheduled array
