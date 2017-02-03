@@ -182,7 +182,9 @@
         Me veseli! Spodaj mi lahko pustiš svojo telefonsko stevilko ali email naslov in te obvestim, ko se odprejo nova mesta. Lep pozdrav!
 
     %form#inputblock.immediate
+      %input#background{name: 'background', type: 'hidden'}/
       %input#message{name: 'message'}>/
-      %a{href: '#'} Pošlji
+      %a{href: '#'}
+        Pošlji
       .error
         &nbsp;

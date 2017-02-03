@@ -259,12 +259,13 @@ handleSubmit = (input) ->
 		# Remove form
 		$('#inputblock').hide() # addClass('hidden')
 		# Submit to Spreadsheet
-		data = $('#inputblock').serialize()
+		background = $('input#background').val()
 		# Using spreadsheet as DB API: https://goo.gl/rzuHMF
 		request = $.post
 			url: "https://script.google.com/macros/s/AKfycbxLhkGxx97M4IJYzydSBRGowDqlHDuv3JFGLxkEPp9JIvnv4ms/exec"
 			data:
 				message: input
+				background: background
 				hasEmail: validateEmail(input)
 				hasPhoneNumber: validatePhoneNumber(input)
 		# Show the rest of the convo
